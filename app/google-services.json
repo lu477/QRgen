@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "301549970950",
+    "project_id": "qrgen-5ad40",
+    "storage_bucket": "qrgen-5ad40.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:301549970950:android:bbba8716bb3f645ee10587",
+        "android_client_info": {
+          "package_name": "com.example.qrgen"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "301549970950-tl3biffnk1h474lmel2idcau4vnkh3k1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAbjRNEn-4qrg3iYuPF9_d54RrO431UTe8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "301549970950-tl3biffnk1h474lmel2idcau4vnkh3k1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
