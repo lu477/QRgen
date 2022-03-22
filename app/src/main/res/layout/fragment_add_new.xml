@@ -1,17 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frameLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/color_main"
     tools:context=".add_newFragment"
-    android:background="@color/color_main">
+    android:backgroundTint="@color/color_main">
 
     <TextView
-        android:layout_width="match_parent"
+        android:id="@+id/addnew_tv_page"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:textSize="20dp"
+        android:layout_marginTop="32dp"
+        android:text="@string/add_new_article_page"
         android:textAlignment="center"
-        android:text="Frag 2" />
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-</FrameLayout>
+    <EditText
+        android:id="@+id/addnew_et_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:hint="@string/add_new_placeholder_name"
+        android:textAlignment="center"
+        android:textSize="@dimen/classic_text_size"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addnew_tv_page" />
+    <EditText
+        android:id="@+id/addnew_et_amount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:hint="@string/add_new_placeholder_amount"
+        android:textAlignment="center"
+        android:textSize="@dimen/classic_text_size"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addnew_et_name" />
+
+    <EditText
+        android:id="@+id/addnew_et_color"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:hint="@string/add_new_placeholder_color"
+        android:textAlignment="center"
+        android:textSize="@dimen/classic_text_size"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addnew_et_amount" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

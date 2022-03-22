@@ -4,7 +4,6 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -14,11 +13,11 @@ import java.util.List;
 
 public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder>  {
 
-    private List<String> mData;
+    private List<Article> mData;
     private LayoutInflater mInflater;
     private ItemClickListener mClickListener;
 
-    MainAdapter(Context context, List<String> data){
+    MainAdapter(Context context, List<Article> data){
         this.mInflater = LayoutInflater.from(context);
         this.mData = data;
     }
@@ -32,19 +31,29 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder>  {
 
     @Override
     public void onBindViewHolder(@NonNull MainAdapter.ViewHolder holder, int position) {
-        String animal = mData.get(position);
+
+        Article name = mData.get(position);
+        Article id = mData.get(position);
+        Article amount = mData.get(position);
         mData.get(holder.getAdapterPosition());
-        holder.myTextView.setText(animal);
+        holder.myTextViewName.setText(name.getName());
+        holder.myTextViewID.setText(id.getId());
+        holder.myTextViewAmount.setText(amount.getAmount());
+
         //        holder.myTextView.setText(mData.get(position));
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
-        private final TextView myTextView;
+        private final TextView myTextViewAmount;
+        private final TextView myTextViewName;
+        private final TextView myTextViewID;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            myTextView = itemView.findViewById(R.id.tv_row_elem);
+            myTextViewName = itemView.findViewById(R.id.tv_name);
+            myTextViewID = itemView.findViewById(R.id.tv_id);
+            myTextViewAmount = itemView.findViewById(R.id.tv_row_elem);
             itemView.setOnClickListener(this);
         }
 
@@ -54,7 +63,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder>  {
         }
     }
 
-    String getItem(int id) {
+    Article getItem(int id) {
         return mData.get(id);
     }
 
