@@ -35,24 +35,27 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder>  {
         Article name = mData.get(position);
         Article id = mData.get(position);
         Article amount = mData.get(position);
+        Article price = mData.get(position);
         mData.get(holder.getAdapterPosition());
+        holder.myTextViewPrice.setText(price.getPrice());
         holder.myTextViewName.setText(name.getName());
-        holder.myTextViewID.setText(id.getId());
+        holder.myTextViewColor.setText(id.getColor());
         holder.myTextViewAmount.setText(amount.getAmount());
 
-        //        holder.myTextView.setText(mData.get(position));
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         private final TextView myTextViewAmount;
         private final TextView myTextViewName;
-        private final TextView myTextViewID;
+        private final TextView myTextViewColor;
+        private final TextView myTextViewPrice;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+            myTextViewPrice = itemView.findViewById(R.id.tv_price);
             myTextViewName = itemView.findViewById(R.id.tv_name);
-            myTextViewID = itemView.findViewById(R.id.tv_id);
+            myTextViewColor = itemView.findViewById(R.id.tv_color);
             myTextViewAmount = itemView.findViewById(R.id.tv_row_elem);
             itemView.setOnClickListener(this);
         }

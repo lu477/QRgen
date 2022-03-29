@@ -12,6 +12,7 @@
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
     <string name="add_new_article_page">Add New Article</string>
+    <string name="add_new_article_price">Price</string>
     <string name="dodaj_novi_artikal_page">Dodaj novi artikal</string>
     <string name="add_new_placeholder_name">   Article name   </string>
     <string name="dodaj_novi_artikal_ime">   Ime artikla   </string>

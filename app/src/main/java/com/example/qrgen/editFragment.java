@@ -18,6 +18,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.android.gms.auth.api.signin.internal.Storage;
+import com.google.firebase.storage.StorageReference;
 import com.google.zxing.WriterException;
 
 import java.io.File;
@@ -31,6 +33,7 @@ import static android.content.ContentValues.TAG;
 
 public class editFragment extends Fragment {
 
+    private StorageReference storageRef;
     private TextView textView;
     private Button generate_qr;
     private Bitmap bitmap;
@@ -40,6 +43,11 @@ public class editFragment extends Fragment {
     private File hi = Environment.getExternalStoragePublicDirectory(
     Environment.DIRECTORY_PICTURES
     );
+    private static final int REQUEST_EXTERNAL_STORAGE = 1;
+    private static String[] PERMISSIONS_STORAGE = {
+            Manifest.permission.READ_EXTERNAL_STORAGE,
+            Manifest.permission.WRITE_EXTERNAL_STORAGE
+    };
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -59,6 +67,8 @@ public class editFragment extends Fragment {
         Bundle bundle = this.getArguments();
 
         if(bundle != null){
+            Log.d(TAG, "id: "+ bundle.getString("id"));
+            Log.d(TAG, "price: "+ bundle.getString("price"));
             textView.setText("Selected item "+ bundle.getString("article"));
         }
 
@@ -67,9 +77,7 @@ public class editFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 // Initializing the QR Encoder with your value to be encoded, type you required and Dimension
-                qrgEncoder = new QRGEncoder(textView.getText().toString().trim(), null, QRGContents.Type.TEXT, 512);
-//                qrgEncoder.setColorBlack(Color.RED);
-//                qrgEncoder.setColorWhite(Color.BLUE);
+                qrgEncoder = new QRGEncoder("Artikal: " + textView.getText().toString().trim()+ " Cena: " + bundle.getString("price"), null, QRGContents.Type.TEXT, 512);
                 // Getting QR-Code as Bitmap
                 bitmap = qrgEncoder.getBitmap();
                 // Setting Bitmap to ImageView
@@ -80,9 +88,6 @@ public class editFragment extends Fragment {
                 qrImage.setImageBitmap(bitmap);
             }
         });
-
         super.onViewCreated(view, savedInstanceState);
     }
-
-
 }

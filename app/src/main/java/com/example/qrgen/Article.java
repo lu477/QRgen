@@ -2,13 +2,30 @@ package com.example.qrgen;
 
 public class Article {
 
-    String name, id, amount;
+    String name, amount, color, price;
 
-    public Article(String name, String id, String amount) {
-        this.name = name;
-        this.id = id;
-        this.amount = amount;
+    Article(){
+
     }
+
+    public Article(String name, String amount, String color, String price) {
+        this.name = name;
+        this.amount = amount;
+        this.color = color;
+        this.price = price;
+    }
+
+    public String getPrice() {
+        return price;
+    }
+
+    public void setPrice(String price) {
+        this.price = price;
+    }
+
+    public String getColor(){ return color; }
+
+    public void setColor(String color){ this.color = color; }
 
     public String getName() {
         return name;
@@ -16,14 +33,6 @@ public class Article {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 
     public String getAmount() {
