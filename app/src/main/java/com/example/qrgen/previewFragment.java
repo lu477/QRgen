@@ -1,5 +1,6 @@
 package com.example.qrgen;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -15,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.qrgen.auth.AuthMain;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -32,6 +34,7 @@ import static android.content.ContentValues.TAG;
 public class previewFragment extends Fragment implements MainAdapter.ItemClickListener {
 
     private Button refreshBtn;
+    private Button btnSignOut;
     private RecyclerView recyclerView;
     private MainAdapter adapter;
     private List<Article> articles;
@@ -54,6 +57,10 @@ public class previewFragment extends Fragment implements MainAdapter.ItemClickLi
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
 
         refreshBtn = (Button) view.findViewById(R.id.btn_refresh);
+        btnSignOut = (Button) view.findViewById(R.id.btn_signOut);
+
+        mAuth = FirebaseAuth.getInstance();
+
         database = FirebaseDatabase.getInstance("https://qrgen-5ad40-default-rtdb.europe-west1.firebasedatabase.app/");
         databaseRef = database.getReference("incentarva@gmailcom");
 
@@ -79,7 +86,6 @@ public class previewFragment extends Fragment implements MainAdapter.ItemClickLi
         recyclerView.setAdapter(adapter);
         adapter.setClickListener(this::onItemClick);
 
-
         refreshBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -102,16 +108,25 @@ public class previewFragment extends Fragment implements MainAdapter.ItemClickLi
             }
         });
 
+        btnSignOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mAuth.signOut();
+                startActivity(new Intent(getContext(), AuthMain.class));
+            }
+        });
+
         super.onViewCreated(view, savedInstanceState);
     }
 
     @Override
     public void onItemClick(View view, int position) {
-        Toast.makeText(getContext(), "You clicked " + adapter.getItem(position) + " on row number " + position, Toast.LENGTH_SHORT).show();
         bundle = new Bundle();
         bundle.putString("id", String.valueOf(position));
         bundle.putString("article", articles.get(position).name);
         bundle.putString("price", articles.get(position).price);
+        bundle.putString("color", articles.get(position).color);
+        bundle.putString("amount", articles.get(position).amount);
         editFragment eFrag = new editFragment();
         eFrag.setArguments(bundle);
         ((MainActivity)getActivity()).replaceFragment(eFrag);

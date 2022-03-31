@@ -10,9 +10,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/btn_refresh"
+        android:layout_marginStart="60dp"
         android:layout_gravity="center_horizontal"
         android:backgroundTint="@color/color_four"
         android:text="Refresh"
+        android:textColor="@color/color_five"
+        />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_signOut"
+        android:layout_marginEnd="60dp"
+        android:layout_gravity="center_horizontal"
+        android:backgroundTint="@color/color_four"
+        android:text="Sign Out"
         android:textColor="@color/color_five"
         />
     <androidx.recyclerview.widget.RecyclerView
